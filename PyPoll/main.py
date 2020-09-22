@@ -18,7 +18,6 @@ with open(csvpath) as csvfile:
 
 # The total number of votes cast
     for row in csvreader:
-        print(row)
         vote_count = vote_count = 1
 
 # A complete list of candidates who received votes
