@@ -15,10 +15,7 @@ with open(csvpath) as csvfile:
 
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
-    csvwriter = csv.writer(csvfile, delimiter=',')
-    
 
-    print(csvreader)
 
     print("Financial Analysis")
     print("----------------------------")
@@ -28,20 +25,24 @@ with open(csvpath) as csvfile:
     print(f"CSV Header: {csv_header}")
 
     # Read each row of data after the header
-    row_count = sum(1 for row in csvreader)
+    month_count = sum(1 for row in csvreader)
+    net_profit = 0
 
     for row in csvreader:
         print(row)
-
+        net_profit = sum(int(r[1]) for r in csv.reader(csvreader))
     # The total number of months included in the dataset
 
-
+    print("Total Months: " +str(month_count))
 
     # The net total amount of "Profit/Losses" over the entire period
+    
 
+    print(f"Total: {net_profit}")
 
     # The average of the changes in "Profit/Losses" over the entire period
 
+    
 
     # The greatest increase in profits (date and amount) over the entire period
 
