@@ -1,8 +1,6 @@
 # First we'll import the os module
 # This will allow us to create file paths across operating systems
 import os
-
-# Module for reading CSV files
 import csv
 
 #file path
@@ -16,7 +14,6 @@ with open(csvpath) as csvfile:
     # CSV reader specifies delimiter and variable that holds contents
     csvreader = csv.reader(csvfile, delimiter=',')
 
-
     print("Financial Analysis")
     print("----------------------------")
 
@@ -25,24 +22,31 @@ with open(csvpath) as csvfile:
     print(f"CSV Header: {csv_header}")
 
     # Read each row of data after the header
-    month_count = sum(1 for row in csvreader)
     net_profit = 0
+    month_count = 0
+    cumulative_change = 0
 
     for row in csvreader:
         print(row)
-        net_profit = sum(int(r[1]) for r in csv.reader(csvreader))
+        net_profit = net_profit + int(row[1])
+        month_count = month_count + 1
+        if month_count > 1:
+            current_change = int(row[1]) - prev_profit
+            cumulative_change = current_change + cumulative_change
+        prev_profit = int(row[1])
+        #average_change = int(row[1]+1) + int(row[1])
     # The total number of months included in the dataset
 
     print("Total Months: " +str(month_count))
 
     # The net total amount of "Profit/Losses" over the entire period
-    
 
-    print(f"Total: {net_profit}")
+    print(f"Total: ${net_profit}")
 
     # The average of the changes in "Profit/Losses" over the entire period
+    average_change = cumulative_change / (month_count - 1)
 
-    
+    print(f"Average Change: {average_change}")
 
     # The greatest increase in profits (date and amount) over the entire period
 
