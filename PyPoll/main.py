@@ -16,17 +16,27 @@ with open(csvpath) as csvfile:
 
     vote_count = 0
 
-# The total number of votes cast
     for row in csvreader:
-        vote_count = vote_count = 1
+        vote_count = vote_count + 1
+        
+#Print header
+
+    print("Election Results")
+    print("-------------------------")        
+# The total number of votes cast
+    print(f"Total Votes: {vote_count}")
+    print("-------------------------")
 
 # A complete list of candidates who received votes
 
 
 # The percentage of votes each candidate won
-
-
 # The total number of votes each candidate won
+    # print("Khan: ")
+    # print("Correy: ")
+    # print("Li: ")
+    # print("O'Tooley: ")
+    # print("-------------------------")
 
 
 # The winner of the election based on popular vote.
